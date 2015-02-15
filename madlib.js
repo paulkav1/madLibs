@@ -1,4 +1,5 @@
-angular.module('madLibs', [])
-.controller('paulCtrl', function(VERSION, $scope) {
-	$scope.version = VERSION;
+angular.module('madApp', [])
+.controller('myC', function() {
+	this.female_name = "Jill";
+	this.adjective = 'tiresome';
 });
