@@ -35,15 +35,14 @@
 		<input type="text" placeholder="useless skill" name="useless_skill" ng-model="myC.useless_skill" required>
 		<span class="error" ng-if="myForm.useless_skill.$error.required">A skill is required!</span></br>		
 		<input type="text" placeholder="adjective" name="adjective" ng-model="myC.adjective" required>	
-		<span class="error" ng-if="myForm.adjective.$error.required">An adjective is required!</span></br>		
+		<span class="error" ng-if="myForm.adjective.$error.required">An adjective is required!</span></br>
+		<input type="submit" value="Generate my Mad Lib" id="submit" name="submit">
 	</form>
 	{{appState}}
 	<div>{{myC.message}}</div>
 	<p class="error" ng-if="myForm.$invalid">Form is Invalid</p>
 	</div>
-	<div>
-		<input type="submit" value="Generate my Mad Lib" id="submit" name="submit">
-	</div>
+
 </div>
 <div ng-show="appState==2">
 	<p>
@@ -52,7 +51,7 @@
 		 What a great decision! With her new skills, {{myC.female_name}} built a(n) {{myC.adjective}} robot named {{myC.jerk}} that not only loved {{myC.dirty_task}} but did it {{myC.huge_number}} times faster. 
 	</p>
 	<div>
-		<input type="submit" value="Start Over" id="reset" name="reset">
+		<input type="submit" value="Start Over" id="reset" name="reset" ng-click="reset()">
 	</div>
 </div>
 </body> 
