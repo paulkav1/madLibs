@@ -1,30 +1,59 @@
 <!DOCTYPE html>
-<html ng-app="madLibs"> 
+<html ng-app="madApp"> 
 <head> 
 <title>ngMadLibs</title> 
-<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.15/angular.min.js"></script> 
-<script src="./madlib.js"</script>
+<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.3.13/angular.min.js"></script> 
+<script src="madlib.js"></script>
+<link rel="stylesheet" href="madlib.css">
 </head> 
-<body ng-controller="paulCtrl"> 
-	App Version = {{version}}
+<body ng-controller="myC"> 
 <div>
-  <h1>Mad Libs</h1>
+	<div>
+	  <img src='mad-lib-happy-face.png' alt='Happy face' title='' style='display:inline-block;' width='100px'/>
+	</div>
+  	<div width='70%'>
+  		<img src='ng-mad-libs-logo.png' alt='Logo' title=''/>
+  		<h1>Automate this!</h1> 
+	</div>
+<div ng-show="appState==1">
 	<h2>Provide the following words:</h2>
-	<form>
-	<input type="text" placeholder="female name" ng-model="fName">
-	<input type="text" placeholder="dirty task">
-	<input type="text" placeholder="obnoxious celebrity">
-	<input type="text" placeholder="job title">
-	<input type="text" placeholder="celebrity">
-	<input type="text" placeholder="huge number">	
-	<input type="text" placeholder="tedious task">
-	<input type="text" placeholder="useless skill">
-	<input type="text" placeholder="adjective">	
-	</form>	
+	<form name="myForm" novalidate ng-submit='submit()'>
+		<input type="text" placeholder="female name" name="female_name" ng-model="myC.female_name" required>
+		<span class="error" ng-if="myForm.female_name.$error.required">A name is required!</span></br>			
+		<input type="text" placeholder="dirty task" name="dirty_task" ng-model="myC.dirty_task" required>
+		<span class="error" ng-if="myForm.dirty_task.$error.required">A task is required!</span></br>			
+		<input type="text" placeholder="obnoxious celebrity" name="jerk" ng-model="myC.jerk" required>
+		<span class="error" ng-if="myForm.jerk.$error.required">A name is required!</span></br>	
+		<input type="text" placeholder="job title" name="job_title" ng-model="myC.job_title" required>
+		<span class="error" ng-if="myForm.job_title.$error.required">A job title is required!</span></br>				
+		<input type="text" placeholder="celebrity" name="celebrity" ng-model="myC.celebrity" required>
+		<span class="error" ng-if="myForm.celebrity.$error.required">A name is required!</span>	</br>		
+		<input type="number" placeholder="huge number" name="huge_number" ng-model="myC.huge_number" min="20" required>
+		<span class="error" ng-if="myForm.huge_number.$error.required">A big number is required!</span></br>
+		<input type="text" placeholder="tedious task" name="tedious_task" ng-model="myC.tedious_task" required>
+		<span class="error" ng-if="myForm.tedious_task.$error.required">A task is required!</span></br>		
+		<input type="text" placeholder="useless skill" name="useless_skill" ng-model="myC.useless_skill" required>
+		<span class="error" ng-if="myForm.useless_skill.$error.required">A skill is required!</span></br>		
+		<input type="text" placeholder="adjective" name="adjective" ng-model="myC.adjective" required>	
+		<span class="error" ng-if="myForm.adjective.$error.required">An adjective is required!</span></br>		
+	</form>
+	{{appState}}
+	<div>{{myC.message}}</div>
+	<p class="error" ng-if="myForm.$invalid">Form is Invalid</p>
+	</div>
+	<div>
+		<input type="submit" value="Generate my Mad Lib" id="submit" name="submit">
+	</div>
 </div>
-<div>
-<p>{{fName}} was a {{job title}} who loved technology. Although she loved parts of her job, she absolutely hated {{tedious task}} and {{dirty task}}. So, {{female_name}} met with her life mentor {{celebrity}} who told her to learn how to {{useless skill}} with Thinkful. Thinkful didn't offer a course on {{useless skill}} so she studied programming instead. What a great decision! With her new skills, {{female name}} built a(n) {{adjective}} robot named {{obnoxious celebrity}} that not only loved {{dirty task}} but did it {{huge number}} faster. 
-</p>
+<div ng-show="appState==2">
+	<p>
+		{{myC.female_name}} was a {{myC.job_title}} who loved technology. Although she loved parts of her job, she absolutely hated {{myC.tedious_task}} and {{myC.dirty_task}}.</br>
+		 So, {{myC.female_name}} met with her life mentor {{myC.celebrity}} who told her to learn how to {{myC.useless_skill}} with Thinkful. Thinkful didn't offer a course on {{myC.useless_skill}} so she studied programming instead. </br>
+		 What a great decision! With her new skills, {{myC.female_name}} built a(n) {{myC.adjective}} robot named {{myC.jerk}} that not only loved {{myC.dirty_task}} but did it {{myC.huge_number}} times faster. 
+	</p>
+	<div>
+		<input type="submit" value="Start Over" id="reset" name="reset">
+	</div>
 </div>
 </body> 
 </html>
