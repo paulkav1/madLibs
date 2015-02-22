@@ -1,3 +1,18 @@
 .error{
 	color: red;
 }
+
+.result.ng-enter {
+  -webkit-animation:2.0s yr;
+  animation:2.0s yr;  
+}
+
+@keyframes yr {
+  from { background:yellow; }
+  to { background:red; }
+}
+
+@-webkit-keyframes yr {
+  from { background:yellow; }
+  to { background:red; }
+}
