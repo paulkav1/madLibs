@@ -2,8 +2,9 @@
 <html ng-app="madApp"> 
 <head> 
 <title>ngMadLibs</title> 
-<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.3.13/angular.min.js"></script> 
-<script src="madlib.js"></script>
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/angularjs/1.3.13/angular.min.js"></script> 
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/angularjs/1.3.13/angular-animate.min.js"></script> 
+<script type="text/javascript" src="madlib.js"></script>
 <link rel="stylesheet" href="madlib.css">
 </head> 
 <body ng-controller="myC"> 
@@ -35,24 +36,20 @@
 		<input type="text" placeholder="useless skill" name="useless_skill" ng-model="myC.useless_skill" required>
 		<span class="error" ng-if="myForm.useless_skill.$error.required">A skill is required!</span></br>		
 		<input type="text" placeholder="adjective" name="adjective" ng-model="myC.adjective" required>	
-		<span class="error" ng-if="myForm.adjective.$error.required">An adjective is required!</span></br>		
+		<span class="error" ng-if="myForm.adjective.$error.required">An adjective is required!</span></br>
+		<input type="submit" value="Generate my Mad Lib" id="submit" name="submit">>
 	</form>
-	{{appState}}
-	<div>{{myC.message}}</div>
 	<p class="error" ng-if="myForm.$invalid">Form is Invalid</p>
 	</div>
-	<div>
-		<input type="submit" value="Generate my Mad Lib" id="submit" name="submit">
-	</div>
 </div>
-<div ng-show="appState==2">
+<div ng-show="appState==2" class="result">
 	<p>
 		{{myC.female_name}} was a {{myC.job_title}} who loved technology. Although she loved parts of her job, she absolutely hated {{myC.tedious_task}} and {{myC.dirty_task}}.</br>
 		 So, {{myC.female_name}} met with her life mentor {{myC.celebrity}} who told her to learn how to {{myC.useless_skill}} with Thinkful. Thinkful didn't offer a course on {{myC.useless_skill}} so she studied programming instead. </br>
 		 What a great decision! With her new skills, {{myC.female_name}} built a(n) {{myC.adjective}} robot named {{myC.jerk}} that not only loved {{myC.dirty_task}} but did it {{myC.huge_number}} times faster. 
 	</p>
 	<div>
-		<input type="submit" value="Start Over" id="reset" name="reset">
+		<input type="submit" value="Start Over" id="reset" name="reset" ng-click="reset()">
 	</div>
 </div>
 </body> 
